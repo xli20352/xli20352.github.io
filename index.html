@@ -56,14 +56,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes shakeField {
             0% { transform: translateX(0); }
@@ -93,7 +87,7 @@
             animation: shakeCardSlow 0.6s ease-in-out 0s 3;
         }
         .shake-email-trigger {
-            animation: shakeEmail 0.3s ease-in-out 0s 3;
+            animation: shakeEmail 0.3s ease-in-out 0s 6;
         }
 
         section {
@@ -110,7 +104,6 @@
             box-shadow: 0 15px 30px -8px rgba(245,158,11,0.4);
         }
 
-        /* ========= 导航栏品牌区 ========= */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -131,39 +124,11 @@
             box-shadow: 0 0 15px rgba(245,158,11,0.5);
             cursor: pointer;
         }
-        .cn-part {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0A0F2C;
-            line-height: 1.2;
-        }
-        .sep {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0A0F2C;
-            line-height: 1.2;
-        }
-        .en-part {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            line-height: 1.2;
-        }
-        .above {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #0A0F2C;
-            letter-spacing: normal;
-            margin-bottom: 2px;
-            white-space: nowrap;
-        }
-        .below {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #0A0F2C;
-            letter-spacing: normal;
-            white-space: nowrap;
-        }
+        .cn-part { font-size: 2rem; font-weight: 700; color: #0A0F2C; line-height: 1.2; }
+        .sep { font-size: 2rem; font-weight: 700; color: #0A0F2C; line-height: 1.2; }
+        .en-part { display: flex; flex-direction: column; justify-content: flex-start; line-height: 1.2; }
+        .above { font-size: 1.05rem; font-weight: 700; color: #0A0F2C; margin-bottom: 2px; white-space: nowrap; }
+        .below { font-size: 1rem; font-weight: 700; color: #0A0F2C; white-space: nowrap; }
 
         .nav-links {
             display: flex;
@@ -195,17 +160,12 @@
             box-shadow: 0 0 12px rgba(245,158,11,0.7);
             transform: translateY(-2px);
         }
-
-        /* 下拉菜单优化 */
         .nav-dropdown {
             position: relative;
             padding-bottom: 12px;
             margin-bottom: -12px;
         }
-        .nav-dropdown > a {
-            cursor: pointer;
-            display: inline-block;
-        }
+        .nav-dropdown > a { cursor: pointer; display: inline-block; }
         .nav-dropdown:hover > a {
             background: linear-gradient(135deg, #FBBF24, #F59E0B);
             color: #0A0F2C;
@@ -217,7 +177,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(15, 23, 42, 0.98);
+            background: rgba(15,23,42,0.98);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(245,158,11,0.7);
             border-radius: 20px;
@@ -226,9 +186,8 @@
             flex-direction: column;
             z-index: 200;
             margin-top: 0;
-            padding-top: 8px;
+            padding: 8px 0;
             box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            padding-bottom: 8px;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.2s ease, visibility 0s linear 0.2s;
@@ -250,13 +209,8 @@
             transition: 0.2s;
             width: 100%;
         }
-        .dropdown-menu a:last-child {
-            border-bottom: none;
-        }
-        .dropdown-menu a:hover {
-            background: #F59E0B;
-            color: #0A0F2C;
-        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: #F59E0B; color: #0A0F2C; }
         .nav-dropdown.services-dropdown .dropdown-menu {
             width: 420px;
             flex-direction: row;
@@ -272,18 +226,14 @@
             border-bottom: none;
         }
 
-        /* 卡片内占位元素样式 */
-        .media-placeholder {
+        .media-grid {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
         }
-        .media-placeholder a, .media-placeholder span {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        .media-item {
             background: rgba(245,158,11,0.2);
             padding: 5px 12px;
             border-radius: 40px;
@@ -292,143 +242,33 @@
             text-decoration: none;
             transition: 0.2s;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
-        .media-placeholder a:hover, .media-placeholder span:hover {
+        .media-item:hover {
             background: #F59E0B;
             color: #0A0F2C;
         }
-        .card-img {
-            width: 100%;
-            border-radius: 24px;
-            margin-bottom: 16px;
-            object-fit: cover;
-            aspect-ratio: 16 / 9;
-            background: rgba(0,0,0,0.2);
-        }
+        .card-img { width: 100%; border-radius: 24px; margin-bottom: 16px; aspect-ratio: 16/9; object-fit: cover; background: rgba(0,0,0,0.2); }
 
-        /* 其余原有样式保持 */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 85vh;
-            padding: 60px 0 80px;
-        }
-        .hero-badge {
-            background: rgba(245,158,11,0.15);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(245,158,11,0.6);
-            border-radius: 60px;
-            padding: 6px 18px;
-            font-size: 0.85rem;
-            margin-bottom: 24px;
-        }
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #FFFFFF, #FDE68A, #F59E0B);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero-slogan {
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-            background: linear-gradient(145deg, #FEF3C7, #F59E0B);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero-desc {
-            font-size: 1.2rem;
-            max-width: 700px;
-            color: #CBD5E1;
-            margin-bottom: 40px;
-        }
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .btn-primary {
-            background: linear-gradient(95deg, #F59E0B, #B45309);
-            border: none;
-            padding: 14px 36px;
-            border-radius: 48px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #0A0F2C;
-            cursor: pointer;
-            transition: 0.25s;
-            box-shadow: 0 10px 20px -5px rgba(245,158,11,0.5);
-            border: 1px solid rgba(255,215,0,0.6);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(95deg, #FBBF24, #D97706);
-            box-shadow: 0 20px 30px -8px rgba(245,158,11,0.6);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #F59E0B;
-            padding: 14px 36px;
-            border-radius: 48px;
-            font-weight: 600;
-            color: #E2E8F0;
-            cursor: pointer;
-            backdrop-filter: blur(4px);
-            transition: 0.25s;
-        }
-        .btn-outline:hover {
-            background: linear-gradient(135deg, #FBBF24, #F59E0B);
-            color: #0A0F2C;
-            border-color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 12px rgba(245,158,11,0.6);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-        .section-sub {
-            text-align: center;
-            color: #94A3B8;
-            max-width: 680px;
-            margin: 0 auto 60px auto;
-            font-size: 1.1rem;
-        }
-
-        .grid-3x2 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 32px;
-        }
-        .grid-3x2 > * {
-            flex: 0 0 calc(33.33% - 22px);
-            min-width: 260px;
-        }
-        .gallery-flex {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 32px;
-        }
-        .gallery-flex .gallery-card {
-            flex: 0 0 calc(33.33% - 22px);
-            min-width: 260px;
-        }
+        .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 85vh; padding: 60px 0 80px; }
+        .hero-badge { background: rgba(245,158,11,0.15); backdrop-filter: blur(4px); border: 1px solid rgba(245,158,11,0.6); border-radius: 60px; padding: 6px 18px; font-size: 0.85rem; margin-bottom: 24px; }
+        .hero h1 { font-size: 4rem; font-weight: 800; line-height: 1.2; margin-bottom: 24px; }
+        .gradient-text { background: linear-gradient(135deg, #FFFFFF, #FDE68A, #F59E0B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-slogan { font-size: 1.8rem; font-weight: 500; margin-bottom: 20px; background: linear-gradient(145deg, #FEF3C7, #F59E0B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-desc { font-size: 1.2rem; max-width: 700px; color: #CBD5E1; margin-bottom: 40px; }
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn-primary { background: linear-gradient(95deg, #F59E0B, #B45309); border: none; padding: 14px 36px; border-radius: 48px; font-weight: 600; font-size: 1rem; color: #0A0F2C; cursor: pointer; transition: 0.25s; box-shadow: 0 10px 20px -5px rgba(245,158,11,0.5); border: 1px solid rgba(255,215,0,0.6); }
+        .btn-primary:hover { transform: translateY(-3px); background: linear-gradient(95deg, #FBBF24, #D97706); box-shadow: 0 20px 30px -8px rgba(245,158,11,0.6); }
+        .btn-outline { background: transparent; border: 1px solid #F59E0B; padding: 14px 36px; border-radius: 48px; font-weight: 600; color: #E2E8F0; cursor: pointer; backdrop-filter: blur(4px); transition: 0.25s; }
+        .btn-outline:hover { background: linear-gradient(135deg, #FBBF24, #F59E0B); color: #0A0F2C; border-color: #fff; transform: translateY(-2px); box-shadow: 0 0 12px rgba(245,158,11,0.6); }
+        .section-title { font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 16px; }
+        .section-sub { text-align: center; color: #94A3B8; max-width: 680px; margin: 0 auto 60px auto; font-size: 1.1rem; }
+        .grid-3x2 { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; }
+        .grid-3x2 > * { flex: 0 0 calc(33.33% - 22px); min-width: 260px; }
+        .gallery-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; }
+        .gallery-flex .gallery-card { flex: 0 0 calc(33.33% - 22px); min-width: 260px; }
         .service-card, .mentor-card, .case-card, .gallery-card, .exp-card-style {
             background: rgba(15,23,42,0.8);
             backdrop-filter: blur(8px);
@@ -443,45 +283,15 @@
             border-color: #F59E0B;
             box-shadow: 0 15px 30px -8px rgba(245,158,11,0.4);
         }
-        .service-icon, .mentor-icon, .case-icon, .gallery-icon {
-            font-size: 3rem;
-            color: #F59E0B;
-            margin-bottom: 20px;
-        }
-        .service-card h4 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-        }
-        .mentor-card h4, .case-card h4, .gallery-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-        }
-        .exp-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(145deg, #FEF3C7, #F59E0B);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 12px;
-        }
-        .exp-text {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-        .badge-campus {
-            background: rgba(245,158,11,0.2);
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 24px;
-            font-size: 0.75rem;
-            margin-top: 12px;
-        }
+        .service-icon, .mentor-icon, .case-icon, .gallery-icon { font-size: 3rem; color: #F59E0B; margin-bottom: 20px; }
+        .service-card h4 { font-size: 1.6rem; margin-bottom: 12px; }
+        .mentor-card h4, .case-card h4, .gallery-card h4 { font-size: 1.4rem; margin-bottom: 12px; }
+        .exp-number { font-size: 3rem; font-weight: 800; background: linear-gradient(145deg, #FEF3C7, #F59E0B); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; }
+        .exp-text { font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 16px; }
+        .badge-campus { background: rgba(245,158,11,0.2); display: inline-block; padding: 4px 12px; border-radius: 24px; font-size: 0.75rem; margin-top: 12px; }
 
-        /* 表单样式 */
         .form-container {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15,23,42,0.7);
             backdrop-filter: blur(12px);
             border-radius: 48px;
             padding: 48px;
@@ -490,23 +300,9 @@
             margin: 0 auto;
             transition: all 0.3s ease;
         }
-        .form-row {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
-        }
-        .input-group {
-            flex: 1;
-            min-width: 200px;
-            position: relative;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #FDE68A;
-        }
+        .form-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+        .input-group { flex: 1; min-width: 200px; position: relative; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #FDE68A; }
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
             padding: 14px 18px;
@@ -514,21 +310,14 @@
             border: 1px solid #334155;
             border-radius: 28px;
             font-size: 1rem;
-            color: #FFFFFF;   /* 统一白色 */
+            color: #FFFFFF;
             transition: 0.2s;
             outline: none;
         }
-        .input-group input:focus, .input-group select:focus {
-            border-color: #F59E0B;
-            box-shadow: 0 0 0 3px rgba(245,158,11,0.3);
-        }
-        .shake-field {
-            animation: shakeField 0.4s ease-in-out 0s 1;
-        }
+        .input-group input:focus, .input-group select:focus { border-color: #F59E0B; box-shadow: 0 0 0 3px rgba(245,158,11,0.3); }
+        .shake-field { animation: shakeField 0.4s ease-in-out 0s 1; }
         .hover-menu, .country-hover-menu { position: relative; width: 100%; }
         .hover-trigger, .country-trigger { cursor: pointer; color: #FFFFFF !important; }
-        
-        /* 下拉选项（通用） */
         .dropdown-options, .continent-dropdown {
             position: absolute;
             top: 100%;
@@ -552,21 +341,9 @@
             transition: 0.1s;
             border-bottom: 1px solid #334155;
         }
-        .dropdown-options a:hover, .continent-dropdown a:hover {
-            background: #F59E0B;
-            color: #0A0F2C !important;
-        }
-        
-        /* 国家选择菜单 - 修复样式 */
-        .continent-dropdown {
-            width: 220px;
-            overflow: visible;
-            padding: 8px 0;
-        }
-        .continent-item {
-            position: relative;
-            width: 100%;
-        }
+        .dropdown-options a:hover, .continent-dropdown a:hover { background: #F59E0B; color: #0A0F2C !important; }
+        .continent-dropdown { width: 220px; overflow: visible; padding: 8px 0; }
+        .continent-item { position: relative; width: 100%; }
         .continent-title {
             padding: 12px 16px;
             font-weight: bold;
@@ -576,10 +353,7 @@
             border-bottom: 1px solid #334155;
             transition: 0.2s;
         }
-        .continent-title:hover {
-            background: #F59E0B;
-            color: #0A0F2C !important;
-        }
+        .continent-title:hover { background: #F59E0B; color: #0A0F2C !important; }
         .country-list {
             position: absolute;
             left: 100%;
@@ -596,9 +370,7 @@
             backdrop-filter: blur(12px);
             padding: 8px 0;
         }
-        .continent-item:hover .country-list {
-            display: flex;
-        }
+        .continent-item:hover .country-list { display: flex; }
         .country-list a {
             padding: 8px 16px;
             color: #FFFFFF !important;
@@ -606,11 +378,7 @@
             font-size: 0.9rem;
             border-bottom: 1px solid #334155;
         }
-        .country-list a:hover {
-            background: #F59E0B;
-            color: #0A0F2C !important;
-        }
-        
+        .country-list a:hover { background: #F59E0B; color: #0A0F2C !important; }
         .btn-submit {
             background: linear-gradient(95deg, #F59E0B, #B45309);
             width: 100%;
@@ -626,7 +394,6 @@
         }
         .btn-submit:hover { background: linear-gradient(95deg, #FBBF24, #D97706); transform: scale(0.98); }
 
-        /* 机器人 + 返回顶部 */
         .robot-wrapper {
             position: fixed;
             right: 30px;
@@ -652,22 +419,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             animation: shakeRobot 2s infinite;
         }
-        .robot-circle:hover {
-            background: #D97706;
-            transform: translateY(-4px);
-            animation: none;
-        }
-        .robot-text-box {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(8px);
-            border: 1px solid #F59E0B;
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #FDE68A;
-            white-space: nowrap;
-        }
+        .robot-circle:hover { background: #D97706; transform: translateY(-4px); animation: none; }
         @keyframes shakeRobot {
             0% { transform: translateY(0px) rotate(0deg); }
             5% { transform: translateY(-3px) rotate(2deg); }
@@ -677,7 +429,17 @@
             25% { transform: translateY(0) rotate(0); }
             100% { transform: translateY(0) rotate(0); }
         }
-
+        .robot-text-box {
+            background: rgba(15,23,42,0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid #F59E0B;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #FDE68A;
+            white-space: nowrap;
+        }
         .go-top-wrapper {
             position: fixed;
             bottom: 30px;
@@ -703,12 +465,9 @@
             border: 1px solid rgba(255,215,0,0.6);
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .go-top-circle:hover {
-            background: #D97706;
-            transform: translateY(-4px);
-        }
+        .go-top-circle:hover { background: #D97706; transform: translateY(-4px); }
         .top-text-box {
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15,23,42,0.9);
             backdrop-filter: blur(8px);
             border: 1px solid #F59E0B;
             border-radius: 20px;
@@ -718,7 +477,6 @@
             color: #FDE68A;
             white-space: nowrap;
         }
-
         .gold-text { color: #FBBF24 !important; font-weight: bold; }
         .contact-card {
             text-align: center;
@@ -730,6 +488,7 @@
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
             border: 1px solid rgba(245,158,11,0.2);
+            cursor: pointer;
         }
         .contact-card:hover {
             transform: translateY(-6px);
@@ -770,8 +529,7 @@
             .robot-wrapper, .go-top-wrapper { right: 20px; }
             .robot-circle, .go-top-circle { width: 44px; height: 44px; font-size: 1.5rem; }
             .robot-text-box, .top-text-box { font-size: 0.65rem; }
-            .above { white-space: normal; }
-            .below { white-space: normal; }
+            .above, .below { white-space: normal; }
             .continent-dropdown { width: 200px; }
             .country-list { width: 200px; left: 100%; }
         }
@@ -785,12 +543,11 @@
             <span class="cn-part">慧泽</span>
             <span class="sep">|</span>
             <div class="en-part">
-                <div class="above">顶尖国际教育机构</div>
+                <div class="above">国际留学咨询专家</div>
                 <div class="below">HUIZE OVERSEAS</div>
             </div>
         </div>
         <div class="nav-links">
-            <!-- 名师团队下拉菜单：直接显示人名 -->
             <div class="nav-dropdown">
                 <a href="#mentors">名师团队</a>
                 <div class="dropdown-menu">
@@ -824,7 +581,6 @@
         </div>
     </div>
 
-    <!-- Hero 部分 -->
     <div class="hero">
         <div class="hero-badge"><i class="fas fa-microchip"></i> AI+大数据 · 精准留学规划 | Data-Driven Global Consulting</div>
         <h1><span class="gradient-text">以慧致远</span><br><span class="gradient-text">泽润未来</span></h1>
@@ -832,11 +588,11 @@
         <div class="hero-desc">基于全球院校数据库 & 个性化智能匹配，赋能每一位学子抵达理想彼岸。<br>AI insights + human mentorship, from dream to reality.</div>
         <div class="btn-group">
             <button class="btn-primary" onclick="document.getElementById('assessment').scrollIntoView({behavior:'smooth'})"><i class="fas fa-rocket"></i> 免费评估 / Free Assessment</button>
-            <button class="btn-outline" onclick="alert('📞 Huize Overseas Hotline: +86 400-6688-236 | 邮箱: Huize.Zhou@gmail.com')"><i class="fas fa-headset"></i> 专家咨询 / Expert Chat</button>
+            <button class="btn-outline" onclick="alert('📞 Huize Overseas Hotline: +49 1590 6594 175 | 邮箱: Huize.Zhou@gmail.com')"><i class="fas fa-headset"></i> 专家咨询 / Expert Chat</button>
         </div>
     </div>
 
-    <!-- 名师团队（三张卡片） -->
+    <!-- 名师团队（照片、文档、视频均采用统一按钮样式） -->
     <section id="mentors">
         <div class="section-title">✨ 名师团队 | Expert Mentors</div>
         <div class="section-sub">海归精英 + 前招生官 · 全程1v1定制</div>
@@ -846,10 +602,13 @@
                 <h4>杨喆</h4>
                 <p>创始人 · 资深国际教育规划师</p>
                 <p style="font-size:0.8rem; margin-top:8px;">10年+美英澳德高端申请经验</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 文档资料：杨喆个人简历与成功案例集')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 照片展示：杨喆老师活动掠影')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 视频介绍：杨喆老师专访')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：杨喆老师活动掠影')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：杨喆老师与学子合影')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：杨喆个人简历')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：杨喆成功案例集')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：杨喆专访')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：杨喆公开课')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="mentor-card" data-mentor="Dr. Müller">
@@ -857,10 +616,13 @@
                 <h4>Dr. Müller</h4>
                 <p>德国项目总监 · 汉诺威大学博士</p>
                 <p style="font-size:0.8rem; margin-top:8px;">专注德国TU9/音乐艺术学院</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 文档资料：Dr. Müller学术履历')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 照片：Dr. Müller在德国讲学')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 视频：德国留学指导片段')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：Müller博士在德国讲学')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：Müller博士接待学生')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：Müller学术履历')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：德国留学白皮书')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：德国留学指导')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：Müller大师课')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="mentor-card" data-mentor="张薇">
@@ -868,16 +630,19 @@
                 <h4>张薇</h4>
                 <p>文书总监 · 剑桥大学硕士</p>
                 <p style="font-size:0.8rem; margin-top:8px;">擅长顶尖名校个人陈述 & 研究计划</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 文档资料：张薇优秀文书范例')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 照片：张薇与学子交流')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 视频：文书写作技巧分享')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：张薇老师与学子交流')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：张薇老师在剑桥')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：张薇优秀文书范例')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：文书写作指南')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：文书技巧分享')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：剑桥申请经验')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 服务项目 -->
+    <!-- 服务项目（所有卡片图片统一为按钮样式） -->
     <section id="services">
         <div class="section-title">📌 服务项目 | Our Services</div>
         <div class="section-sub">一站式全流程留学解决方案</div>
@@ -886,60 +651,78 @@
                 <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
                 <h4>留学规划</h4>
                 <p>选校定位、时间轴规划，<br>背景提升方案</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 留学规划资料下载')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 规划案例展示')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 规划讲解视频')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：规划案例展示')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：规划方案示例')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：选校策略')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：时间表模板')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：案例解读')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：背景提升')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="service-card" data-service="文书精修">
                 <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
                 <h4>文书精修</h4>
                 <p>个性化头脑风暴 + 外教润色，<br>拒绝模板</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 文书精修样稿')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 修改前后对比图')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 文书导师讲解')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：修改前后对比')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：文书批改样例')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：PS范例')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：推荐信范例')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：头脑风暴')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：润色过程')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="service-card" data-service="院校申请">
                 <div class="service-icon"><i class="fas fa-paper-plane"></i></div>
                 <h4>院校申请</h4>
                 <p>网申递交、材料认证，<br>面试辅导全跟踪</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 申请材料清单')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 网申系统截图')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 面试辅导实录')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：网申系统截图')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：面试现场')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：申请材料清单')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：面试常见问题')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：面试辅导实录')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：院校介绍视频')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="service-card" data-service="签证辅导">
                 <div class="service-icon"><i class="fas fa-passport"></i></div>
                 <h4>签证辅导</h4>
                 <p>面签培训、资金说明，<br>拒签再申方案</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 签证材料模板')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 签证中心实拍')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 面签模拟视频')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：签证中心实拍')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：资金证明样例')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：签证材料模板')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：面签问答库')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：面签模拟视频')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：拒签再申案例')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="service-card" data-service="视频教学">
                 <div class="service-icon"><i class="fas fa-video"></i></div>
                 <h4>视频教学</h4>
                 <p>世界顶尖教授网络面授<br>专业先修课程</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 课程大纲下载')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 教授风采')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 课程试听')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：教授授课截图')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：课程资料封面')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：课程大纲')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：学术写作指南')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：试听课1')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：试听课2')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="service-card" data-service="行前指导">
                 <div class="service-icon"><i class="fas fa-plane-departure"></i></div>
                 <h4>行前指导</h4>
-                <p>住宿安排、文化适应、<br>境外服务</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 行前手册PDF')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 海外宿舍实景')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 当地生活指南')"><i class="fas fa-video"></i> 视频</span>
+                <p>住宿安排、文化适应，<br>境外服务</p>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：海外宿舍实景')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：校园地图')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：行前手册PDF')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：行李清单')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：当地生活指南')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：学姐学长分享')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
         </div>
@@ -952,57 +735,69 @@
         <div class="exp-card-style" style="margin-bottom: 48px;">
             <div class="exp-number" id="dynamicYears">2018 – 2026</div>
             <div class="exp-text"><i class="fas fa-award"></i> <span id="yearsCount">9</span>年资深国际教育咨询历程 | Years of Excellence</div>
-            <p style="margin-top: 12px; color: #CBD5E1;">深耕德国、英国、澳洲、俄罗斯、美国等主流国家，累计助力3000+学子进入世界名校。<br>从申请到入校，全周期智慧陪伴。</p>
+            <p style="margin-top:12px; color:#CBD5E1;">深耕德国、英国、澳洲、俄罗斯、美国等主流国家，累计助力3000+学子进入世界名校。<br>从申请到入校，全周期智慧陪伴。</p>
         </div>
         <div class="grid-3x2">
             <div class="case-card" data-case="李同学">
                 <div class="case-icon"><i class="fas fa-university"></i></div>
                 <h4>李同学</h4>
                 <p>“双非背景均分85，在慧泽帮助下拿到纽大教育学offer，文书老师真的超用心！”</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 李同学完整申请档案')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 李同学录取信照片')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 李同学经验分享视频')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：李同学录取信')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：李同学生活照')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：李同学申请档案')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：李同学推荐信')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：李同学经验分享')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：纽大校园vlog')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="case-card" data-case="王同学">
                 <div class="case-icon"><i class="fas fa-music"></i></div>
                 <h4>王同学</h4>
                 <p>“从国内音乐学院到汉诺威，慧泽的德国团队全程支持，面试辅导精准，圆了我的德国梦。”</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 王同学作品集精选')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 王同学汉诺威校园留影')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 王同学演奏片段')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：王同学汉诺威校园留影')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：王同学演出照')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：王同学作品集')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：面试培训记录')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：王同学演奏视频')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：汉诺威校园导览')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="case-card" data-case="张同学">
                 <div class="case-icon"><i class="fas fa-laptop-code"></i></div>
                 <h4>张同学</h4>
                 <p>“211 CS 背景，收获UNSW全奖博士。研究计划改了11稿，感谢慧泽的学术导师！”</p>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 张同学研究计划书')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 张同学实验室照片')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 张同学获奖访谈')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：张同学实验室照片')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：UNSW校园风景')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：研究计划书')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：论文发表清单')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：张同学获奖访谈')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：全奖申请攻略')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 全球院校风采（现有5张+新增康奈尔，共6张） -->
+    <!-- 全球院校风采（主图保留，下方照片改为按钮样式） -->
     <section id="gallery">
         <div class="section-title">🏛️ 全球院校风采 | Global Campus Gallery</div>
         <div class="section-sub">德国·俄罗斯·美国·澳大利亚 — 直击名校之门，探索艺术与学术殿堂</div>
         <div class="gallery-flex">
             <div class="gallery-card">
-                <img class="card-img" src="images/hannover-main-building.jpg" alt="汉诺威音乐与戏剧学院主楼" onerror="this.style.display='none'">
+                <img class="card-img" src="https://via.placeholder.com/800x450/0A0F2C/FFFFFF?text=Hannover+Music" alt="汉诺威音乐与戏剧学院主楼" onerror="this.style.display='none'">
                 <div class="gallery-icon"><i class="fas fa-music"></i></div>
                 <h4>汉诺威音乐与戏剧学院</h4>
                 <p>德国 · Hochschule für Musik Hannover</p>
                 <div class="badge-campus">🏛️ 主楼实拍 · 音乐圣殿</div>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 学院介绍手册')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 更多校园照片')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 校园虚拟导览')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：汉诺威音乐厅')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：汉诺威图书馆')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：学院介绍手册')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：申请指南')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：校园虚拟导览')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：学生音乐会')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="gallery-card">
@@ -1010,10 +805,13 @@
                 <h4>圣彼得堡国立大学</h4>
                 <p>俄罗斯 · СПбГУ</p>
                 <div class="badge-campus">🏛️ 十二学院楼 · 校园大门</div>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 圣彼得堡大学申请指南')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 校园风光集')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 学生生活视频')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：十二学院楼')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：涅瓦河畔')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：申请指南')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：专业列表')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：校园风光视频')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：学生生活')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="gallery-card">
@@ -1021,10 +819,13 @@
                 <h4>慕尼黑音乐与戏剧学院</h4>
                 <p>德国 · HMTM</p>
                 <div class="badge-campus">🎭 正门 · 精英艺术殿堂</div>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 专业课程设置')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 演出剧照')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 大师班录像')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：主楼正门')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：剧院内景')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：课程设置')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：申请要求')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：大师班录像')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：学生演出')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="gallery-card">
@@ -1032,10 +833,13 @@
                 <h4>新南威尔士大学 (UNSW Sydney)</h4>
                 <p>澳大利亚 · 八大名校</p>
                 <div class="badge-campus">🏫 主校门 · 砂岩建筑</div>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 UNSW 招生手册')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 校园360照片')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 校园宣传片')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：主校门')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：图书馆')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：招生手册')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：奖学金信息')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：校园宣传片')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：学生分享')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="gallery-card">
@@ -1043,10 +847,13 @@
                 <h4>莱比锡门德尔松音乐与戏剧学院</h4>
                 <p>德国 · 1843年创立</p>
                 <div class="badge-campus">🎻 历史大门 · 门德尔松</div>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 学院历史文献')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 历史建筑照片')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 门德尔松作品演奏')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：历史大门')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：门德尔松雕像')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：历史文献')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：知名校友')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：门德尔松作品')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：校园纪录片')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
             <div class="gallery-card">
@@ -1054,16 +861,19 @@
                 <h4>康奈尔大学 (Cornell University)</h4>
                 <p>美国 · 常春藤盟校</p>
                 <div class="badge-campus">🌄 伊萨卡校区 · 峡谷与瀑布</div>
-                <div class="media-placeholder">
-                    <span onclick="alert('📄 康奈尔大学申请白皮书')"><i class="fas fa-file-alt"></i> 文档</span>
-                    <span onclick="alert('🖼️ 康奈尔校园美景')"><i class="fas fa-image"></i> 照片</span>
-                    <span onclick="alert('🎥 康奈尔宣传视频')"><i class="fas fa-video"></i> 视频</span>
+                <div class="media-grid">
+                    <span class="media-item" onclick="alert('📷 照片1：钟楼')"><i class="fas fa-image"></i> 照片1</span>
+                    <span class="media-item" onclick="alert('📷 照片2：峡谷瀑布')"><i class="fas fa-image"></i> 照片2</span>
+                    <span class="media-item" onclick="alert('📄 文档1：申请白皮书')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <span class="media-item" onclick="alert('📄 文档2：学院介绍')"><i class="fas fa-file-alt"></i> 文档2</span>
+                    <span class="media-item" onclick="alert('🎥 视频1：宣传视频')"><i class="fas fa-video"></i> 视频1</span>
+                    <span class="media-item" onclick="alert('🎥 视频2：校园风光')"><i class="fas fa-video"></i> 视频2</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI+免费评估表单（新增年龄字段） -->
+    <!-- AI+免费评估表单 -->
     <section id="assessment">
         <div class="section-title">AI+<span class="gold-text">免费</span>评估 <span style="font-size:1.5rem;">🎓 AI+ Free Profile Evaluation</span></div>
         <div class="section-sub">填写基本信息，资深顾问将在24小时内为您提供专属留学规划方案<br>Fill in your info, our senior consultants will craft a customized roadmap within <span class="gold-text">24h.</span></div>
@@ -1092,7 +902,6 @@
         </div>
     </section>
 
-    <!-- 联系我们 -->
     <section id="contact">
         <div class="section-title">📧 联系我们 | Contact Us</div>
         <div class="section-sub">慧泽留学官方邮箱 · 随时为您答疑</div>
@@ -1112,11 +921,10 @@
         </div>
         <p>© 2018 慧泽国际教育咨询 | Huize Overseas Consulting · 以慧致远，泽润未来</p>
         <p style="margin-top: 12px; font-size: 0.8rem;">北京 · 上海 · 西安 · 汉诺威 | 全球线上咨询中心</p>
-        <p style="margin-top: 8px;"><i class="fas fa-envelope gold-text"></i> Huize.Zhou@gmail.com | <i class="fas fa-phone"></i> 400-6688-236</p>
+        <p style="margin-top: 8px;"><i class="fas fa-envelope gold-text"></i> Huize.Zhou@gmail.com | <i class="fas fa-phone"></i> +49 1590 6594 175</p>
     </div>
 </div>
 
-<!-- 机器人 + 返回顶部 -->
 <div id="robotWrapper" class="robot-wrapper">
     <div class="robot-circle" id="robotMsgBtn"><i class="fas fa-robot"></i></div>
     <div class="robot-text-box">点我留言</div>
@@ -1127,14 +935,12 @@
 </div>
 
 <script>
-    // 动态年份
     function updateYears() { const startYear = 2018; const currentYear = new Date().getFullYear(); document.getElementById('dynamicYears').innerText = `${startYear} – ${currentYear}`; document.getElementById('yearsCount').innerText = currentYear - startYear; } updateYears();
     
-    // 生成年龄选项12-32
     function buildAgeOptions() {
-        const ageContainer = document.getElementById('ageOptions');
-        if(!ageContainer) return;
-        ageContainer.innerHTML = '';
+        const container = document.getElementById('ageOptions');
+        if(!container) return;
+        container.innerHTML = '';
         for(let i=12; i<=32; i++) {
             const a = document.createElement('a');
             a.href = '#';
@@ -1143,20 +949,32 @@
             a.addEventListener('click', (e) => {
                 e.preventDefault();
                 document.getElementById('ageInput').value = i;
-                ageContainer.style.display = 'none';
+                container.style.display = 'none';
             });
-            ageContainer.appendChild(a);
+            container.appendChild(a);
         }
     }
     buildAgeOptions();
     
-    // 国家菜单构建（完整国家列表）
-    const countriesData = { asia:["日本 Japan","韩国 South Korea","新加坡 Singapore","马来西亚 Malaysia","泰国 Thailand","阿联酋 UAE","沙特 Arabia","印度 India","土耳其 Turkey","以色列 Israel","哈萨克斯坦 Kazakhstan","印度尼西亚 Indonesia","越南 Vietnam","菲律宾 Philippines"], africa:["南非 South Africa","埃及 Egypt","摩洛哥 Morocco","尼日利亚 Nigeria","肯尼亚 Kenya","加纳 Ghana","埃塞俄比亚 Ethiopia","坦桑尼亚 Tanzania"], europe:["英国 UK","德国 Germany","法国 France","荷兰 Netherlands","瑞士 Switzerland","意大利 Italy","西班牙 Spain","瑞典 Sweden","丹麦 Denmark","芬兰 Finland","挪威 Norway","爱尔兰 Ireland","俄罗斯 Russia","比利时 Belgium","奥地利 Austria","波兰 Poland","捷克 Czech","希腊 Greece","葡萄牙 Portugal","匈牙利 Hungary"], americas:["美国 USA","加拿大 Canada","墨西哥 Mexico","巴西 Brazil","阿根廷 Argentina","智利 Chile","哥伦比亚 Colombia","秘鲁 Peru"], oceania:["澳大利亚 Australia","新西兰 New Zealand","巴布亚新几内亚 Papua New Guinea","斐济 Fiji"] };
+    // 国家顺序：欧洲、美洲、亚洲、大洋洲、非洲
+    const countriesData = {
+        europe: ["英国","德国","法国","荷兰","瑞士","意大利","西班牙","瑞典","丹麦","芬兰","挪威","爱尔兰","俄罗斯","比利时","奥地利","波兰","捷克","希腊","葡萄牙","匈牙利"],
+        americas: ["美国","加拿大","墨西哥","巴西","阿根廷","智利","哥伦比亚","秘鲁"],
+        asia: ["日本","韩国","新加坡","马来西亚","泰国","阿联酋","沙特","印度","土耳其","以色列","哈萨克斯坦","印度尼西亚","越南","菲律宾"],
+        oceania: ["澳大利亚","新西兰","巴布亚新几内亚","斐济"],
+        africa: ["南非","埃及","摩洛哥","尼日利亚","肯尼亚","加纳","埃塞俄比亚","坦桑尼亚"]
+    };
     function buildCountryMenu() { 
         const container = document.getElementById('continentDropdown'); 
         if(!container) return; 
         container.innerHTML = ''; 
-        const continents = [{name:"🌏 亚洲 Asia", key:"asia"},{name:"🌍 非洲 Africa", key:"africa"},{name:"🌎 欧洲 Europe", key:"europe"},{name:"🌎 美洲 Americas", key:"americas"},{name:"🌊 大洋洲 Oceania", key:"oceania"}]; 
+        const continents = [
+            {name:"🌍 欧洲 Europe", key:"europe"},
+            {name:"🌎 美洲 Americas", key:"americas"},
+            {name:"🌏 亚洲 Asia", key:"asia"},
+            {name:"🌊 大洋洲 Oceania", key:"oceania"},
+            {name:"🌍 非洲 Africa", key:"africa"}
+        ];
         continents.forEach(cont => { 
             const div = document.createElement('div'); 
             div.className = 'continent-item'; 
@@ -1173,8 +991,7 @@
                 a.addEventListener('click', (e) => { 
                     e.preventDefault(); 
                     document.getElementById('targetCountry').value = c; 
-                    // 点击后隐藏整个洲下拉（可选）
-                    document.getElementById('continentDropdown').style.display = 'none';
+                    container.style.display = 'none'; 
                 }); 
                 countryDiv.appendChild(a); 
             }); 
@@ -1184,8 +1001,7 @@
     } 
     buildCountryMenu();
     
-    // 悬停菜单通用
-    function setupSmartHover(menuId, optionsId, inputId) { const menu = document.getElementById(menuId); const options = document.getElementById(optionsId); const input = document.getElementById(inputId); let timeoutId = null; function show() { if(timeoutId) clearTimeout(timeoutId); options.style.display = 'flex'; } function hide() { timeoutId = setTimeout(() => { options.style.display = 'none'; }, 150); } menu.addEventListener('mouseenter', show); menu.addEventListener('mouseleave', hide); options.addEventListener('mouseenter', () => { if(timeoutId) clearTimeout(timeoutId); options.style.display = 'flex'; }); options.addEventListener('mouseleave', hide); options.querySelectorAll('a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); input.value = link.getAttribute('data-value'); options.style.display = 'none'; })); }
+    function setupSmartHover(menuId, optionsId, inputId) { const menu = document.getElementById(menuId); const options = document.getElementById(optionsId); const input = document.getElementById(inputId); let tid=null; function show(){ if(tid) clearTimeout(tid); options.style.display='flex'; } function hide(){ tid=setTimeout(()=>{ options.style.display='none'; },150); } menu.addEventListener('mouseenter',show); menu.addEventListener('mouseleave',hide); options.addEventListener('mouseenter',()=>{ if(tid) clearTimeout(tid); options.style.display='flex'; }); options.addEventListener('mouseleave',hide); options.querySelectorAll('a').forEach(link=>link.addEventListener('click',(e)=>{ e.preventDefault(); input.value=link.getAttribute('data-value'); options.style.display='none'; })); }
     setupSmartHover('majorMenu','majorOptions','majorInput');
     setupSmartHover('bgMenu','bgOptions','bgInput');
     setupSmartHover('genderMenu','genderOptions','genderInput');
@@ -1204,32 +1020,82 @@
     }
     
     function shakeField(el){ el.classList.add('shake-field'); setTimeout(()=>el.classList.remove('shake-field'),400); }
-    function submitForm(){ const name=document.getElementById('fullname'); const gender=document.getElementById('genderInput'); const age=document.getElementById('ageInput'); const email=document.getElementById('email'); const phone=document.getElementById('phone'); const major=document.getElementById('majorInput'); const budget=document.getElementById('budgetInput'); const bg=document.getElementById('bgInput'); const country=document.getElementById('targetCountry'); let ok=true; if(!name.value.trim()){ shakeField(name); ok=false; } if(!gender.value.trim()){ shakeField(gender); ok=false; } if(!age.value.trim()){ shakeField(age); ok=false; } if(!email.value.trim()){ shakeField(email); ok=false; } if(!phone.value.trim()){ shakeField(phone); ok=false; } if(!major.value.trim()){ shakeField(major); ok=false; } if(!budget.value.trim()){ shakeField(budget); ok=false; } if(!bg.value.trim()){ shakeField(bg); ok=false; } if(!country.value.trim()){ shakeField(country); ok=false; } if(!ok){ alert('请完整填写所有字段'); return; } const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/; if(!emailPattern.test(email.value.trim())){ shakeField(email); alert('📧 邮箱格式有误'); return; } alert(`🎉 ${name.value.trim()}，感谢信任慧泽！\n性别: ${gender.value.trim()}\n年龄: ${age.value.trim()}\n专业方向: ${major.value.trim()}\n计划预算: ${budget.value.trim()}\n当前背景: ${bg.value.trim()}\n目标国家: ${country.value.trim()}\n顾问老师24h内通过 ${phone.value.trim()} 联系您，发送规划至 ${email.value.trim()}。\n慧泽 · 以慧致远，泽润未来`); document.getElementById('consultForm').reset(); ['majorInput','bgInput','genderInput','budgetInput','targetCountry','ageInput'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; }); }
+    
+    function submitForm() {
+        const name = document.getElementById('fullname').value.trim();
+        const gender = document.getElementById('genderInput').value.trim();
+        const age = document.getElementById('ageInput').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const major = document.getElementById('majorInput').value.trim();
+        const budget = document.getElementById('budgetInput').value.trim();
+        const bg = document.getElementById('bgInput').value.trim();
+        const country = document.getElementById('targetCountry').value.trim();
+        
+        let ok = true;
+        if(!name){ shakeField(document.getElementById('fullname')); ok=false; }
+        if(!gender){ shakeField(document.getElementById('genderInput')); ok=false; }
+        if(!age){ shakeField(document.getElementById('ageInput')); ok=false; }
+        if(!email){ shakeField(document.getElementById('email')); ok=false; }
+        if(!phone){ shakeField(document.getElementById('phone')); ok=false; }
+        if(!major){ shakeField(document.getElementById('majorInput')); ok=false; }
+        if(!budget){ shakeField(document.getElementById('budgetInput')); ok=false; }
+        if(!bg){ shakeField(document.getElementById('bgInput')); ok=false; }
+        if(!country){ shakeField(document.getElementById('targetCountry')); ok=false; }
+        if(!ok){ alert('请完整填写所有字段'); return; }
+        
+        const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+        if(!emailPattern.test(email)){ shakeField(document.getElementById('email')); alert('📧 邮箱格式有误'); return; }
+        
+        const subject = encodeURIComponent('慧泽留学咨询评估');
+        const body = encodeURIComponent(`姓名：${name}\n性别：${gender}\n年龄：${age}\n邮箱：${email}\n电话：${phone}\n专业方向：${major}\n计划预算：${budget}\n当前背景：${bg}\n目标国家：${country}\n\n（请将以上信息发送给我们，顾问会尽快联系您）`);
+        window.location.href = `mailto:Huize.Zhou@gmail.com?subject=${subject}&body=${body}`;
+        alert('邮件客户端已打开，请点击发送即可。感谢您的咨询！');
+        document.getElementById('consultForm').reset();
+        ['majorInput','bgInput','genderInput','budgetInput','targetCountry','ageInput'].forEach(id=>{ let el=document.getElementById(id); if(el) el.value=''; });
+    }
+    
     function copyWechat(){ const id="altybest"; if(navigator.clipboard) navigator.clipboard.writeText(id).then(()=>alert('微信号已复制：'+id)).catch(()=>alert('请手动复制微信号：'+id)); else alert('请手动复制微信号：'+id); }
     
-    // 下拉滚动 + 抖动
     document.querySelectorAll('.nav-dropdown:first-child .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const name=this.getAttribute('data-mentor'); const card=document.querySelector(`.mentor-card[data-mentor="${name}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     document.querySelectorAll('.services-dropdown .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const svc=this.getAttribute('data-service'); const card=document.querySelector(`.service-card[data-service="${svc}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     document.querySelectorAll('.nav-dropdown:nth-child(3) .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const cname=this.getAttribute('data-case'); const card=document.querySelector(`.case-card[data-case="${cname}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     
-    // 机器人留言
     const robotCircle = document.getElementById('robotMsgBtn');
     if(robotCircle){
         robotCircle.addEventListener('click',()=>{
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             const emailEl = document.getElementById('contactEmail');
-            if(emailEl){ emailEl.classList.add('shake-email-trigger'); setTimeout(()=>emailEl.classList.remove('shake-email-trigger'),900); }
+            if(emailEl){ 
+                emailEl.classList.remove('shake-email-trigger');
+                void emailEl.offsetWidth;
+                emailEl.classList.add('shake-email-trigger'); 
+                setTimeout(()=>emailEl.classList.remove('shake-email-trigger'), 1800);
+            }
         });
     }
+    
     const contactCardDiv = document.getElementById('contactCard');
     const emailSpan = document.getElementById('contactEmail');
     if(contactCardDiv && emailSpan){
-        contactCardDiv.addEventListener('mouseenter',()=>{ emailSpan.classList.add('shake-email-trigger'); setTimeout(()=>emailSpan.classList.remove('shake-email-trigger'),900); });
+        contactCardDiv.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const email = emailSpan.innerText;
+            if(navigator.clipboard){
+                navigator.clipboard.writeText(email).then(() => alert('邮箱号已复制：' + email)).catch(() => alert('手动复制失败'));
+            } else {
+                alert('请手动复制邮箱：' + email);
+            }
+        });
+        contactCardDiv.addEventListener('mouseenter',()=>{
+            emailSpan.classList.add('shake-email-trigger');
+            setTimeout(()=>emailSpan.classList.remove('shake-email-trigger'), 900);
+        });
     }
+    
     document.querySelectorAll('.nav-links a:not(.nav-dropdown > a)').forEach(anchor=>{ anchor.addEventListener('click',function(e){ const href=this.getAttribute('href'); if(href && href.startsWith('#') && document.querySelector(href)){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'}); } }); });
     document.querySelector('.logo').addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
     
-    // 机器人定位
     function setRobotPosition() { const navbar = document.querySelector('.navbar'); const robotWrap = document.getElementById('robotWrapper'); if(navbar && robotWrap){ const navbarBottom = navbar.getBoundingClientRect().bottom + window.scrollY; robotWrap.style.top = (navbarBottom + 15) + 'px'; } } setRobotPosition(); window.addEventListener('resize', setRobotPosition); window.addEventListener('scroll', setRobotPosition);
 </script>
 </body>
