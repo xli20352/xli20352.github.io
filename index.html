@@ -1097,6 +1097,21 @@
     document.querySelector('.logo').addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
     
     function setRobotPosition() { const navbar = document.querySelector('.navbar'); const robotWrap = document.getElementById('robotWrapper'); if(navbar && robotWrap){ const navbarBottom = navbar.getBoundingClientRect().bottom + window.scrollY; robotWrap.style.top = (navbarBottom + 15) + 'px'; } } setRobotPosition(); window.addEventListener('resize', setRobotPosition); window.addEventListener('scroll', setRobotPosition);
+        // 图片放大功能（点击照片全屏查看）
+    window.showLightbox = function(src) {
+        // 创建遮罩层
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox';
+        // 创建图片元素
+        const img = document.createElement('img');
+        img.src = src;
+        overlay.appendChild(img);
+        // 点击遮罩层关闭
+        overlay.onclick = function() {
+            document.body.removeChild(overlay);
+        };
+        document.body.appendChild(overlay);
+    };
 </script>
 </body>
 </html>
