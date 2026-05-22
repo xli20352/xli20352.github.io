@@ -1150,6 +1150,10 @@ window.showLightbox = function(src) {
     // 点击关闭
     overlay.addEventListener('click', () => overlay.remove());
 };
+document.querySelectorAll('.gallery-card img, .service-card img, .case-card img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => showLightbox(img.src));
+});
 </script>
 </body>
 </html>
