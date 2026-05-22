@@ -1096,22 +1096,60 @@
     document.querySelectorAll('.nav-links a:not(.nav-dropdown > a)').forEach(anchor=>{ anchor.addEventListener('click',function(e){ const href=this.getAttribute('href'); if(href && href.startsWith('#') && document.querySelector(href)){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'}); } }); });
     document.querySelector('.logo').addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
     
-    function setRobotPosition() { const navbar = document.querySelector('.navbar'); const robotWrap = document.getElementById('robotWrapper'); if(navbar && robotWrap){ const navbarBottom = navbar.getBoundingClientRect().bottom + window.scrollY; robotWrap.style.top = (navbarBottom + 15) + 'px'; } } setRobotPosition(); window.addEventListener('resize', setRobotPosition); window.addEventListener('scroll', setRobotPosition);
-        // 图片放大功能（点击照片全屏查看）
-    window.showLightbox = function(src) {
-        // 创建遮罩层
-        const overlay = document.createElement('div');
-        overlay.className = 'lightbox';
-        // 创建图片元素
-        const img = document.createElement('img');
-        img.src = src;
-        overlay.appendChild(img);
-        // 点击遮罩层关闭
-        overlay.onclick = function() {
-            document.body.removeChild(overlay);
-        };
-        document.body.appendChild(overlay);
-    };
+    // 图片放大功能（点击照片全屏查看）- 带完整样式
+window.showLightbox = function(src) {
+    // 移除已存在的 lightbox
+    const existing = document.getElementById('customLightbox');
+    if (existing) existing.remove();
+
+    // 创建遮罩层
+    const overlay = document.createElement('div');
+    overlay.id = 'customLightbox';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+    overlay.style.zIndex = '9999';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.cursor = 'pointer';
+
+    // 创建图片
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.maxWidth = '90%';
+    img.style.maxHeight = '90%';
+    img.style.borderRadius = '16px';
+    img.style.boxShadow = '0 0 30px rgba(245,158,11,0.5)';
+    img.style.border = '2px solid #F59E0B';
+
+    // 添加关闭提示
+    const closeHint = document.createElement('div');
+    closeHint.innerText = '点击任意位置关闭';
+    closeHint.style.position = 'absolute';
+    closeHint.style.bottom = '30px';
+    closeHint.style.left = '0';
+    closeHint.style.right = '0';
+    closeHint.style.textAlign = 'center';
+    closeHint.style.color = '#FDE68A';
+    closeHint.style.fontSize = '14px';
+    closeHint.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    closeHint.style.padding = '8px 16px';
+    closeHint.style.width = 'fit-content';
+    closeHint.style.margin = '0 auto';
+    closeHint.style.borderRadius = '40px';
+    closeHint.style.backdropFilter = 'blur(4px)';
+
+    overlay.appendChild(img);
+    overlay.appendChild(closeHint);
+    document.body.appendChild(overlay);
+
+    // 点击关闭
+    overlay.addEventListener('click', () => overlay.remove());
+};
 </script>
 </body>
 </html>
