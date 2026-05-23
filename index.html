@@ -86,6 +86,7 @@
         .shake-card {
             animation: shakeCardSlow 0.6s ease-in-out 0s 3;
         }
+        /* 邮箱抖动6次 */
         .shake-email-trigger {
             animation: shakeEmail 0.3s ease-in-out 0s 6;
         }
@@ -252,12 +253,52 @@
         }
         .card-img { width: 100%; border-radius: 24px; margin-bottom: 16px; aspect-ratio: 16/9; object-fit: cover; background: rgba(0,0,0,0.2); }
 
-        .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 85vh; padding: 60px 0 80px; }
-        .hero-badge { background: rgba(245,158,11,0.15); backdrop-filter: blur(4px); border: 1px solid rgba(245,158,11,0.6); border-radius: 60px; padding: 6px 18px; font-size: 0.85rem; margin-bottom: 24px; }
-        .hero h1 { font-size: 4rem; font-weight: 800; line-height: 1.2; margin-bottom: 24px; }
-        .gradient-text { background: linear-gradient(135deg, #FFFFFF, #FDE68A, #F59E0B); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero-slogan { font-size: 1.8rem; font-weight: 500; margin-bottom: 20px; background: linear-gradient(145deg, #FEF3C7, #F59E0B); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero-desc { font-size: 1.2rem; max-width: 700px; color: #CBD5E1; margin-bottom: 40px; }
+        /* 修改 hero 的 padding-top，从60px减半到30px */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 85vh;
+            padding: 30px 0 80px;
+        }
+        .hero-badge {
+            background: rgba(245,158,11,0.15);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(245,158,11,0.6);
+            border-radius: 60px;
+            padding: 6px 18px;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FFFFFF, #FDE68A, #F59E0B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-slogan {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            background: linear-gradient(145deg, #FEF3C7, #F59E0B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            max-width: 700px;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+        }
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .btn-primary { background: linear-gradient(95deg, #F59E0B, #B45309); border: none; padding: 14px 36px; border-radius: 48px; font-weight: 600; font-size: 1rem; color: #0A0F2C; cursor: pointer; transition: 0.25s; box-shadow: 0 10px 20px -5px rgba(245,158,11,0.5); border: 1px solid rgba(255,215,0,0.6); }
         .btn-primary:hover { transform: translateY(-3px); background: linear-gradient(95deg, #FBBF24, #D97706); box-shadow: 0 20px 30px -8px rgba(245,158,11,0.6); }
@@ -1061,6 +1102,7 @@
     document.querySelectorAll('.services-dropdown .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const svc=this.getAttribute('data-service'); const card=document.querySelector(`.service-card[data-service="${svc}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     document.querySelectorAll('.nav-dropdown:nth-child(3) .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const cname=this.getAttribute('data-case'); const card=document.querySelector(`.case-card[data-case="${cname}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     
+    // 机器人留言（保持 V56 完整实现：含强制重绘，抖动6次已在 CSS 中定义）
     const robotCircle = document.getElementById('robotMsgBtn');
     if(robotCircle){
         robotCircle.addEventListener('click',()=>{
@@ -1078,6 +1120,7 @@
     const contactCardDiv = document.getElementById('contactCard');
     const emailSpan = document.getElementById('contactEmail');
     if(contactCardDiv && emailSpan){
+        contactCardDiv.addEventListener('mouseenter',()=>{ emailSpan.classList.add('shake-email-trigger'); setTimeout(()=>emailSpan.classList.remove('shake-email-trigger'),900); });
         contactCardDiv.addEventListener('click', (e) => {
             e.stopPropagation();
             const email = emailSpan.innerText;
@@ -1087,73 +1130,61 @@
                 alert('请手动复制邮箱：' + email);
             }
         });
-        contactCardDiv.addEventListener('mouseenter',()=>{
-            emailSpan.classList.add('shake-email-trigger');
-            setTimeout(()=>emailSpan.classList.remove('shake-email-trigger'), 900);
-        });
     }
     
     document.querySelectorAll('.nav-links a:not(.nav-dropdown > a)').forEach(anchor=>{ anchor.addEventListener('click',function(e){ const href=this.getAttribute('href'); if(href && href.startsWith('#') && document.querySelector(href)){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'}); } }); });
     document.querySelector('.logo').addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
     
-    // 图片放大功能（点击照片全屏查看）- 带完整样式
-window.showLightbox = function(src) {
-    // 移除已存在的 lightbox
-    const existing = document.getElementById('customLightbox');
-    if (existing) existing.remove();
+    // 图片放大功能（点击照片全屏查看）— 遮罩透明度提高30%（从0.9改为0.63）
+    window.showLightbox = function(src) {
+        const existing = document.getElementById('customLightbox');
+        if (existing) existing.remove();
 
-    // 创建遮罩层
-    const overlay = document.createElement('div');
-    overlay.id = 'customLightbox';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
-    overlay.style.zIndex = '9999';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.cursor = 'pointer';
+        const overlay = document.createElement('div');
+        overlay.id = 'customLightbox';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.63)';  // 透明度提高30%
+        overlay.style.zIndex = '9999';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.cursor = 'pointer';
 
-    // 创建图片
-    const img = document.createElement('img');
-    img.src = src;
-    img.style.maxWidth = '90%';
-    img.style.maxHeight = '90%';
-    img.style.borderRadius = '16px';
-    img.style.boxShadow = '0 0 30px rgba(245,158,11,0.5)';
-    img.style.border = '2px solid #F59E0B';
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.maxWidth = '90%';
+        img.style.maxHeight = '90%';
+        img.style.borderRadius = '16px';
+        img.style.boxShadow = '0 0 30px rgba(245,158,11,0.5)';
+        img.style.border = '2px solid #F59E0B';
 
-    // 添加关闭提示
-    const closeHint = document.createElement('div');
-    closeHint.innerText = '点击任意位置关闭';
-    closeHint.style.position = 'absolute';
-    closeHint.style.bottom = '30px';
-    closeHint.style.left = '0';
-    closeHint.style.right = '0';
-    closeHint.style.textAlign = 'center';
-    closeHint.style.color = '#FDE68A';
-    closeHint.style.fontSize = '14px';
-    closeHint.style.backgroundColor = 'rgba(0,0,0,0.5)';
-    closeHint.style.padding = '8px 16px';
-    closeHint.style.width = 'fit-content';
-    closeHint.style.margin = '0 auto';
-    closeHint.style.borderRadius = '40px';
-    closeHint.style.backdropFilter = 'blur(4px)';
+        const closeHint = document.createElement('div');
+        closeHint.innerText = '点击任意位置关闭';
+        closeHint.style.position = 'absolute';
+        closeHint.style.bottom = '30px';
+        closeHint.style.left = '0';
+        closeHint.style.right = '0';
+        closeHint.style.textAlign = 'center';
+        closeHint.style.color = '#FDE68A';
+        closeHint.style.fontSize = '14px';
+        closeHint.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        closeHint.style.padding = '8px 16px';
+        closeHint.style.width = 'fit-content';
+        closeHint.style.margin = '0 auto';
+        closeHint.style.borderRadius = '40px';
+        closeHint.style.backdropFilter = 'blur(4px)';
 
-    overlay.appendChild(img);
-    overlay.appendChild(closeHint);
-    document.body.appendChild(overlay);
+        overlay.appendChild(img);
+        overlay.appendChild(closeHint);
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', () => overlay.remove());
+    };
 
-    // 点击关闭
-    overlay.addEventListener('click', () => overlay.remove());
-};
-document.querySelectorAll('.gallery-card img, .service-card img, .case-card img').forEach(img => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => showLightbox(img.src));
-});
+    function setRobotPosition() { const navbar = document.querySelector('.navbar'); const robotWrap = document.getElementById('robotWrapper'); if(navbar && robotWrap){ const navbarBottom = navbar.getBoundingClientRect().bottom + window.scrollY; robotWrap.style.top = (navbarBottom + 15) + 'px'; } } setRobotPosition(); window.addEventListener('resize', setRobotPosition); window.addEventListener('scroll', setRobotPosition);
 </script>
 </body>
 </html>
