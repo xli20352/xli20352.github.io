@@ -236,7 +236,7 @@
         .nav-dropdown.services-dropdown .dropdown-menu a:nth-child(6) {
             border-bottom: none;
         }
-        /* 院校风采下拉菜单加宽（增加两个汉字宽度） */
+        /* 院校风采下拉菜单加宽 */
         .gallery-dropdown .dropdown-menu {
             width: 360px;
         }
@@ -668,7 +668,7 @@
         </div>
     </div>
 
-    <!-- 名师团队 -->
+    <!-- 名师团队（所有文档均为无下载的弹窗预览） -->
     <section id="mentors">
         <div class="section-title">✨ 名师团队 | Expert Mentors</div>
         <div class="section-sub">海归精英 + 前招生官 · 全程1v1定制</div>
@@ -681,7 +681,9 @@
                 <div class="media-grid">
                     <img src="images/yangzhe_photo1.png" alt="杨喆老师（创始人）作报告后" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;" onclick="showLightbox(this.src)">
                     <img src="images/yangzhe_photo2.png" alt="杨喆老师（创始人）在办公室" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;" onclick="showLightbox(this.src)">
+                    <!-- 文档1: PDF预览弹窗（无下载） -->
                     <span class="media-item" onclick="showPDFModal('https://raw.githubusercontent.com/xli20352/xli20352.github.io/main/yangzhe_resume.pdf')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <!-- 文档2: 文本弹窗 -->
                     <span class="media-item" onclick="showDocumentModal('杨喆 · 高端案例集', '涵盖藤校、G5、德国TU9等名校录取实例，背景提升策略深度剖析。')"><i class="fas fa-file-alt"></i> 文档2</span>
                     <span class="media-item" onclick="alert('🎥 视频1：杨喆专访')"><i class="fas fa-video"></i> 视频1</span>
                     <span class="media-item" onclick="alert('🎥 视频2：杨喆公开课')"><i class="fas fa-video"></i> 视频2</span>
@@ -844,7 +846,7 @@
             }, 600);
         });
     }
-    // 文档文本模态框
+    // 文档文本模态框（与照片放大视觉一致）
     window.showDocumentModal = function(title, content) {
         const existing = document.getElementById('docLightbox');
         if(existing) existing.remove();
@@ -893,7 +895,7 @@
         document.body.appendChild(overlay);
         overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.remove(); });
     };
-    // PDF预览弹窗（类似照片放大）
+    // PDF预览弹窗（无下载，仅内嵌预览）
     window.showPDFModal = function(pdfUrl) {
         const existing = document.getElementById('pdfLightbox');
         if(existing) existing.remove();
