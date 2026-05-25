@@ -236,7 +236,6 @@
         .nav-dropdown.services-dropdown .dropdown-menu a:nth-child(6) {
             border-bottom: none;
         }
-        /* 院校风采下拉菜单加宽 */
         .gallery-dropdown .dropdown-menu {
             width: 360px;
         }
@@ -668,7 +667,7 @@
         </div>
     </div>
 
-    <!-- 名师团队（所有文档均为无下载的弹窗预览） -->
+    <!-- 名师团队（杨喆文档1使用Google Docs内嵌PDF预览） -->
     <section id="mentors">
         <div class="section-title">✨ 名师团队 | Expert Mentors</div>
         <div class="section-sub">海归精英 + 前招生官 · 全程1v1定制</div>
@@ -681,9 +680,8 @@
                 <div class="media-grid">
                     <img src="images/yangzhe_photo1.png" alt="杨喆老师（创始人）作报告后" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;" onclick="showLightbox(this.src)">
                     <img src="images/yangzhe_photo2.png" alt="杨喆老师（创始人）在办公室" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;" onclick="showLightbox(this.src)">
-                    <!-- 文档1: PDF预览弹窗（无下载） -->
+                    <!-- 文档1: 使用 Google Docs 内嵌 PDF 预览，不会下载 -->
                     <span class="media-item" onclick="showPDFModal('https://raw.githubusercontent.com/xli20352/xli20352.github.io/main/yangzhe_resume.pdf')"><i class="fas fa-file-alt"></i> 文档1</span>
-                    <!-- 文档2: 文本弹窗 -->
                     <span class="media-item" onclick="showDocumentModal('杨喆 · 高端案例集', '涵盖藤校、G5、德国TU9等名校录取实例，背景提升策略深度剖析。')"><i class="fas fa-file-alt"></i> 文档2</span>
                     <span class="media-item" onclick="alert('🎥 视频1：杨喆专访')"><i class="fas fa-video"></i> 视频1</span>
                     <span class="media-item" onclick="alert('🎥 视频2：杨喆公开课')"><i class="fas fa-video"></i> 视频2</span>
@@ -720,7 +718,7 @@
         </div>
     </section>
 
-    <!-- 服务项目 -->
+    <!-- 服务项目（完整保留） -->
     <section id="services">
         <div class="section-title">📌 服务项目 | Our Services</div>
         <div class="section-sub">一站式全流程留学解决方案</div>
@@ -734,7 +732,7 @@
         </div>
     </section>
 
-    <!-- 成功案例 -->
+    <!-- 成功案例完整保留 -->
     <section id="cases">
         <div class="section-title">🏆 成功案例 | Success Stories</div>
         <div class="section-sub">3000+学子斩获全球顶尖offer</div>
@@ -746,7 +744,7 @@
         </div>
     </section>
 
-    <!-- 全球院校风采 -->
+    <!-- 全球院校风采完整保留 -->
     <section id="gallery">
         <div class="section-title">🏛️ 全球院校风采 | Global Campus Gallery</div>
         <div class="section-sub">德国·俄罗斯·美国·澳大利亚 — 直击名校之门，探索艺术与学术殿堂</div>
@@ -760,7 +758,7 @@
         </div>
     </section>
 
-    <!-- 评估表单 -->
+    <!-- 评估表单完整保留 -->
     <section id="assessment"><div class="section-title">AI+<span class="gold-text">免费</span>评估 <span style="font-size:1.5rem;">🎓 AI+ Free Profile Evaluation</span></div><div class="section-sub">填写基本信息，资深顾问将在24小时内为您提供专属留学规划方案<br>Fill in your info, our senior consultants will craft a customized roadmap within <span class="gold-text">24h.</span></div><div class="form-container"><form id="consultForm" onsubmit="event.preventDefault(); submitForm();"><div class="form-row"><div class="input-group"><label><i class="fas fa-user"></i> 姓名 / Full Name</label><input type="text" id="fullname" placeholder="张同学"></div><div class="input-group"><label><i class="fas fa-venus-mars"></i> 性别 / Gender</label><div class="hover-menu" id="genderMenu"><input type="text" id="genderInput" class="hover-trigger" placeholder="鼠标悬停选择性别" readonly><div class="dropdown-options" id="genderOptions"><a href="#" data-value="男">男 Male</a><a href="#" data-value="女">女 Female</a></div></div></div><div class="input-group"><label><i class="fas fa-calendar-alt"></i> 年龄 / Age</label><div class="hover-menu" id="ageMenu"><input type="text" id="ageInput" class="hover-trigger" placeholder="鼠标悬停选择年龄" readonly><div class="dropdown-options" id="ageOptions"></div></div></div></div><div class="form-row"><div class="input-group"><label><i class="fas fa-envelope"></i> 邮箱 / Email</label><input type="email" id="email" placeholder="example@domain.com"></div><div class="input-group"><label><i class="fas fa-phone-alt"></i> 电话 / Phone</label><input type="tel" id="phone" placeholder="+86 123 4567 8901"></div></div><div class="form-row"><div class="input-group"><label><i class="fas fa-graduation-cap"></i> 专业方向 / Major Direction</label><div class="country-hover-menu" id="majorSelector"><input type="text" id="majorInput" class="country-trigger" placeholder="鼠标悬停选择专业方向" readonly><div class="continent-dropdown" id="majorDropdown"></div></div></div><div class="input-group"><label><i class="fas fa-chart-line"></i> 计划预算 / Budget</label><div class="hover-menu" id="budgetMenu"><input type="text" id="budgetInput" class="hover-trigger" placeholder="鼠标悬停选择预算范围" readonly><div class="dropdown-options" id="budgetOptions"><a href="#" data-value="20-30万">20-30万</a><a href="#" data-value="30-40万">30-40万</a><a href="#" data-value="40-50万">40-50万</a><a href="#" data-value="50万以上">50万以上</a></div></div></div></div><div class="form-row"><div class="input-group"><label><i class="fas fa-user-graduate"></i> 当前背景 / Current Background</label><div class="hover-menu" id="bgMenu"><input type="text" id="bgInput" class="hover-trigger" placeholder="鼠标悬停选择当前阶段" readonly><div class="dropdown-options" id="bgOptions"><a href="#" data-value="高中">高中 / High School</a><a href="#" data-value="大专">大专 / Associate Degree</a><a href="#" data-value="本科">本科 / Bachelor</a><a href="#" data-value="已工作">已工作 / Working Professional</a></div></div></div><div class="input-group"><label><i class="fas fa-globe"></i> 目标国家 / Target Country</label><div class="country-hover-menu" id="countrySelector"><input type="text" id="targetCountry" class="country-trigger" placeholder="鼠标悬停选择洲和国家" readonly><div class="continent-dropdown" id="continentDropdown"></div></div></div></div><button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> 免费获取专属规划 / Get My Free Plan</button><p style="font-size:0.8rem; text-align:center; margin-top:20px; color:#8CA3C7;">隐私保护 · 数据加密 | Your data is safe with us</p></form></div></section>
 
     <section id="contact"><div class="section-title">📧 联系我们 | Contact Us</div><div class="section-sub">慧泽留学官方邮箱 · 随时为您答疑</div><div class="contact-card" id="contactCard"><i class="fas fa-envelope-open-text" style="font-size: 3rem; color: #FFFFFF;"></i><p id="contactEmail" style="font-size: 1.4rem; margin: 16px 0; letter-spacing: 1px; color: #FBBF24; font-weight: bold;">Huize.Zhou@gmail.com</p><p style="color: #94A3B8;">工作日 9:00-20:00 在线回复 | Response within 24h</p></div></section>
@@ -895,7 +893,7 @@
         document.body.appendChild(overlay);
         overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.remove(); });
     };
-    // PDF预览弹窗（无下载，仅内嵌预览）
+    // PDF预览弹窗 - 使用 Google Docs 内嵌预览，确保不下载
     window.showPDFModal = function(pdfUrl) {
         const existing = document.getElementById('pdfLightbox');
         if(existing) existing.remove();
@@ -922,8 +920,10 @@
         container.style.boxShadow = '0 0 30px rgba(245,158,11,0.5)';
         container.style.border = '2px solid #F59E0B';
         container.style.cursor = 'default';
+        // 使用 Google Docs 嵌入 PDF，避免直接下载
+        const embedUrl = `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(pdfUrl)}`;
         const iframe = document.createElement('iframe');
-        iframe.src = pdfUrl;
+        iframe.src = embedUrl;
         iframe.style.width = '100%';
         iframe.style.height = 'calc(100% - 50px)';
         iframe.style.border = 'none';
