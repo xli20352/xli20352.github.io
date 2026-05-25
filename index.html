@@ -9,6 +9,8 @@
     <meta name="apple-mobile-web-app-title" content="慧泽留学">
     <title>慧泽留学 | 慧以致远，泽润未来 | Huize Overseas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- PDF.js 核心库 -->
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -667,7 +669,7 @@
         </div>
     </div>
 
-    <!-- 名师团队（杨喆文档1使用个人站点PDF，强制内联预览） -->
+    <!-- 名师团队（杨喆文档1使用 PDF.js 预览） -->
     <section id="mentors">
         <div class="section-title">✨ 名师团队 | Expert Mentors</div>
         <div class="section-sub">海归精英 + 前招生官 · 全程1v1定制</div>
@@ -680,8 +682,8 @@
                 <div class="media-grid">
                     <img src="images/yangzhe_photo1.png" alt="杨喆老师（创始人）作报告后" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;" onclick="showLightbox(this.src)">
                     <img src="images/yangzhe_photo2.png" alt="杨喆老师（创始人）在办公室" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;" onclick="showLightbox(this.src)">
-                    <!-- 文档1: 使用个人站点 PDF，通过 iframe 内联显示，绝不下载 -->
-                    <span class="media-item" onclick="showPDFModal('https://xli20352.github.io/yangzhe_resume.pdf')"><i class="fas fa-file-alt"></i> 文档1</span>
+                    <!-- 文档1: 使用 PDF.js 渲染，无下载 -->
+                    <span class="media-item" onclick="showPDFWithPDFJS('https://xli20352.github.io/yangzhe_resume.pdf')"><i class="fas fa-file-alt"></i> 文档1</span>
                     <span class="media-item" onclick="showDocumentModal('杨喆 · 高端案例集', '涵盖藤校、G5、德国TU9等名校录取实例，背景提升策略深度剖析。')"><i class="fas fa-file-alt"></i> 文档2</span>
                     <span class="media-item" onclick="alert('🎥 视频1：杨喆专访')"><i class="fas fa-video"></i> 视频1</span>
                     <span class="media-item" onclick="alert('🎥 视频2：杨喆公开课')"><i class="fas fa-video"></i> 视频2</span>
@@ -718,8 +720,8 @@
         </div>
     </section>
 
-    <!-- 服务项目、成功案例、全球院校风采、评估表单、联系方式等均与之前完全相同（为节省篇幅，此处保留完整内容，实际与 V68 一致） -->
-    <!-- 因输出长度限制，以下为完整复制，确保所有功能正常 -->
+    <!-- 服务项目、成功案例、全球院校风采、评估表单、联系方式等保持不变（为节省篇幅，此处仅示例头部，实际完整内容已包含） -->
+    <!-- 以下为完整内容，无删减 -->
     <section id="services">
         <div class="section-title">📌 服务项目 | Our Services</div>
         <div class="section-sub">一站式全流程留学解决方案</div>
@@ -891,12 +893,9 @@
         document.body.appendChild(overlay);
         overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.remove(); });
     };
-    // PDF 预览弹窗：直接嵌入原 PDF（通过个人站点，不会强制下载）
-    window.showPDFModal = function(pdfUrl) {
-        const existing = document.getElementById('pdfLightbox');
-        if(existing) existing.remove();
+    // PDF.js 渲染函数（完全替代下载）
+    window.showPDFWithPDFJS = function(pdfUrl) {
         const overlay = document.createElement('div');
-        overlay.id = 'pdfLightbox';
         overlay.style.position = 'fixed';
         overlay.style.top = '0';
         overlay.style.left = '0';
@@ -908,21 +907,20 @@
         overlay.style.alignItems = 'center';
         overlay.style.justifyContent = 'center';
         overlay.style.cursor = 'pointer';
+
         const container = document.createElement('div');
         container.style.width = '90%';
         container.style.height = '90%';
         container.style.maxWidth = '1000px';
-        container.style.backgroundColor = '#fff';
+        container.style.backgroundColor = '#2b2b2b';
         container.style.borderRadius = '16px';
         container.style.overflow = 'hidden';
         container.style.boxShadow = '0 0 30px rgba(245,158,11,0.5)';
         container.style.border = '2px solid #F59E0B';
         container.style.cursor = 'default';
-        const iframe = document.createElement('iframe');
-        iframe.src = pdfUrl;
-        iframe.style.width = '100%';
-        iframe.style.height = 'calc(100% - 50px)';
-        iframe.style.border = 'none';
+        container.style.display = 'flex';
+        container.style.flexDirection = 'column';
+
         const closeBar = document.createElement('div');
         closeBar.style.height = '50px';
         closeBar.style.backgroundColor = '#0F172A';
@@ -943,10 +941,48 @@
         closeBtn.onclick = () => overlay.remove();
         closeBar.appendChild(closeBtn);
         container.appendChild(closeBar);
-        container.appendChild(iframe);
+
+        const canvasContainer = document.createElement('div');
+        canvasContainer.style.flex = '1';
+        canvasContainer.style.overflowY = 'auto';
+        canvasContainer.style.padding = '20px';
+        canvasContainer.style.display = 'flex';
+        canvasContainer.style.flexDirection = 'column';
+        canvasContainer.style.alignItems = 'center';
+        container.appendChild(canvasContainer);
         overlay.appendChild(container);
         document.body.appendChild(overlay);
-        overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.remove(); });
+
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        loadingTask.promise.then(function(pdf) {
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                pdf.getPage(pageNum).then(function(page) {
+                    const scale = 1.5;
+                    const viewport = page.getViewport({ scale: scale });
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    canvas.style.display = 'block';
+                    canvas.style.margin = '0 auto 20px auto';
+                    canvas.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+                    canvasContainer.appendChild(canvas);
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            }
+        }).catch(function(error) {
+            console.error('PDF 加载失败: ', error);
+            const errorMsg = document.createElement('div');
+            errorMsg.innerText = 'PDF 加载失败，请检查文件链接。';
+            errorMsg.style.color = '#ff4444';
+            errorMsg.style.padding = '20px';
+            errorMsg.style.textAlign = 'center';
+            canvasContainer.appendChild(errorMsg);
+        });
     };
     // 照片放大
     window.showLightbox = function(src) {
@@ -991,7 +1027,7 @@
         document.body.appendChild(overlay);
         overlay.addEventListener('click', () => overlay.remove());
     };
-    // 其他交互
+    // 下拉菜单滚动、卡片抖动、机器人、联系卡片复制等
     document.querySelectorAll('.nav-dropdown:first-child .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const name=this.getAttribute('data-mentor'); const card=document.querySelector(`.mentor-card[data-mentor="${name}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     document.querySelectorAll('.services-dropdown .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const svc=this.getAttribute('data-service'); const card=document.querySelector(`.service-card[data-service="${svc}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
     document.querySelectorAll('.nav-dropdown:nth-child(3) .dropdown-menu a').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); const cname=this.getAttribute('data-case'); const card=document.querySelector(`.case-card[data-case="${cname}"]`); if(card){ card.scrollIntoView({behavior:'smooth',block:'center'}); card.classList.add('shake-card'); setTimeout(()=>card.classList.remove('shake-card'),1800); } }));
